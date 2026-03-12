@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-times ナビ | 卓球スクール専門 集客代行サービス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0B1C3A;--navy2:#132347;--navy3:#1B3060;
+  --orange:#E8500A;--orange2:#FF6B2B;--orange-pale:#FFF0E8;
+  --yellow:#FFD600;--white:#fff;--off:#F7F5F0;--gray:#F0EDE8;
+  --gray2:#E2DDD6;--gray3:#9B9490;--text:#1A1714;--muted:#6B6460;
+  --r:6px;--rl:12px;--jp:'Noto Sans JP',sans-serif;--en:'Inter',sans-serif;
+  --tr:.3s cubic-bezier(.4,0,.2,1);--sh:0 4px 24px rgba(11,28,58,.12);
+  --sho:0 8px 32px rgba(232,80,10,.28);
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--jp);font-size:16px;line-height:1.7;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;height:auto;display:block;}a{text-decoration:none;color:inherit;}ul{list-style:none;}
+.en{font-family:var(--en);}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 40px;}
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* TOP BAR */
+#topbar{background:var(--navy3);padding:8px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.tb-msg{font-size:12px;color:rgba(255,255,255,.7);letter-spacing:.04em;}
+.tb-phone{display:flex;align-items:center;gap:6px;color:#fff;font-family:var(--en);font-size:16px;font-weight:800;letter-spacing:.02em;}
+.tb-phone svg{width:15px;height:15px;color:var(--yellow);}
+.tb-hours{font-size:10px;color:rgba(255,255,255,.45);margin-left:4px;}
+
+/* HEADER */
+#header{position:sticky;top:0;z-index:1000;background:rgba(11,28,58,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);transition:box-shadow var(--tr);}
+#header.scrolled{box-shadow:0 4px 24px rgba(11,28,58,.4);}
+.h-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.h-logo{display:flex;align-items:center;gap:10px;}
+.lm{width:34px;height:34px;background:var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.lm svg{width:18px;height:18px;color:#fff;}
+.ln{font-family:var(--en);font-size:17px;font-weight:900;color:#fff;letter-spacing:.02em;}
+.lt{font-size:9px;color:rgba(255,255,255,.38);letter-spacing:.08em;}
+.h-nav{display:flex;align-items:center;gap:26px;}
+.h-nav a{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.7);transition:color var(--tr);}
+.h-nav a:hover{color:#fff;}
+.h-cta a{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:var(--r);transition:all var(--tr);}
+.h-cta a:hover{background:var(--orange2);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all var(--tr);}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);padding:14px 18px;z-index:999;flex-direction:column;gap:3px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-size:14px;color:rgba(255,255,255,.8);padding:11px 14px;border-radius:var(--r);transition:background var(--tr);}
+.mob-menu a:hover{background:rgba(255,255,255,.08);color:#fff;}
+
+/* HERO */
+#hero{background:var(--navy);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 75% 40%,rgba(232,80,10,.14) 0%,transparent 55%),linear-gradient(135deg,#0B1C3A 0%,#0d2248 60%,#0B1C3A 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;}
+.hero-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:72px 0 80px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,0,.12);border:1px solid rgba(255,214,0,.28);border-radius:100px;padding:6px 14px;font-size:11.5px;font-weight:600;color:var(--yellow);margin-bottom:20px;letter-spacing:.04em;}
+.hero-badge svg{width:13px;height:13px;}
+.hero-h1{font-size:clamp(28px,3.6vw,48px);font-weight:900;line-height:1.22;color:#fff;letter-spacing:-.02em;margin-bottom:20px;word-break:keep-all;overflow-wrap:anywhere;}
+.hero-h1 .acc{color:var(--orange2);position:relative;}
+.hero-h1 .acc::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:var(--orange);border-radius:2px;}
+.hero-lead{font-size:14px;color:rgba(255,255,255,.62);line-height:1.85;margin-bottom:34px;max-width:460px;word-break:keep-all;overflow-wrap:anywhere;}
+.hero-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.btn-cta{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-family:var(--jp);font-size:15px;font-weight:700;padding:17px 32px;border-radius:var(--r);transition:all var(--tr);box-shadow:0 4px 20px rgba(232,80,10,.32);}
+.btn-cta:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,80,10,.45);}
+.btn-cta svg{width:17px;height:17px;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;padding:17px 20px;border-radius:var(--r);border:1px solid rgba(255,255,255,.2);transition:all var(--tr);}
+.btn-ghost:hover{border-color:rgba(255,255,255,.48);color:#fff;background:rgba(255,255,255,.06);}
+.hero-stats{display:flex;gap:32px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap;}
+.hs-num{font-family:var(--en);font-size:32px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;}
+.hs-num .s{font-size:17px;color:var(--orange2);}
+.hs-lbl{font-size:10px;color:rgba(255,255,255,.42);margin-top:5px;letter-spacing:.04em;}
+.hero-vis{position:relative;}
+.hi-wrap{border-radius:var(--rl);overflow:hidden;box-shadow:0 20px 64px rgba(11,28,58,.5);}
+.hi-wrap img{width:100%;height:490px;object-fit:cover;filter:brightness(.88);}
+.hi-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,28,58,.5) 100%);}
+.h-card{position:absolute;bottom:-18px;left:-26px;background:#fff;border-radius:var(--rl);padding:16px 20px;box-shadow:0 8px 40px rgba(11,28,58,.2);min-width:180px;}
+.hc-lbl{font-size:9.5px;color:var(--muted);font-weight:500;letter-spacing:.06em;}
+.hc-val{font-family:var(--en);font-size:25px;font-weight:900;color:var(--orange);line-height:1;letter-spacing:-.02em;}
+.hc-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.h-badge2{position:absolute;top:-12px;right:-12px;background:var(--navy2);border:2px solid rgba(255,255,255,.1);border-radius:var(--rl);padding:13px 16px;text-align:center;}
+.hb2-num{font-family:var(--en);font-size:20px;font-weight:900;color:var(--orange2);line-height:1;}
+.hb2-lbl{font-size:9.5px;color:rgba(255,255,255,.45);margin-top:4px;white-space:nowrap;}
+
+/* TRUST */
+#trust{background:var(--off);padding:28px 0;border-top:1px solid var(--gray2);border-bottom:1px solid var(--gray2);}
+.trust-inner{display:flex;align-items:center;gap:36px;justify-content:center;flex-wrap:wrap;}
+.trust-lbl{font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.1em;white-space:nowrap;}
+.trust-logos{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;}
+.tl{font-family:var(--en);font-size:12.5px;font-weight:700;color:var(--gray3);opacity:.75;}
+.tl-sep{font-size:18px;color:var(--gray2);}
+
+/* SECTION COMMON */
+.sec-lbl{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:13px;}
+.sec-lbl::before{content:'';width:20px;height:2px;background:var(--orange);flex-shrink:0;}
+.sec-lbl-c{justify-content:center;}.sec-lbl-c::before{display:none;}
+.sec-h{font-size:clamp(24px,3vw,38px);font-weight:700;line-height:1.3;color:var(--navy);letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere;}
+.sec-sub{font-size:14px;color:var(--muted);margin-top:13px;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;}
+
+/* PROBLEMS */
+#problems{padding:96px 0;background:var(--navy);}
+.prob-hd{text-align:center;margin-bottom:52px;}
+.prob-hd .sec-h{color:#fff;}
+.prob-hd .sec-sub{color:rgba(255,255,255,.48);max-width:560px;margin:13px auto 0;}
+.prob-checks{display:grid;grid-template-columns:1fr 1fr;gap:13px;max-width:760px;margin:0 auto;}
+.pc{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:15px 18px;}
+.pc-ico{width:30px;height:30px;background:rgba(232,80,10,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pc-ico svg{width:16px;height:16px;color:var(--orange2);}
+.pc-txt{font-size:13.5px;color:rgba(255,255,255,.85);font-weight:500;word-break:keep-all;}
+.prob-cta{text-align:center;margin-top:44px;}
+.prob-cta p{font-size:13.5px;color:rgba(255,255,255,.5);margin-bottom:18px;}
+
+/* ABOUT */
+#about{padding:108px 0;background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img{border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh);}
+.about-img img{width:100%;height:410px;object-fit:cover;}
+.anb{position:absolute;bottom:-18px;right:-18px;background:var(--navy);border-radius:var(--rl);padding:20px 24px;box-shadow:0 8px 40px rgba(11,28,58,.25);}
+.anb-num{font-family:var(--en);font-size:36px;font-weight:900;color:var(--orange2);line-height:1;}
+.anb-lbl{font-size:10px;color:rgba(255,255,255,.5);margin-top:4px;white-space:nowrap;}
+.al{margin-top:30px;display:flex;flex-direction:column;gap:13px;}
+.ali{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;background:var(--off);border-radius:var(--r);border-left:3px solid var(--orange);}
+.ali-ico{width:32px;height:32px;background:var(--orange-pale);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--orange);}
+.ali-ico svg{width:16px;height:16px;}
+.ali-txt strong{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.ali-txt span{font-size:12px;color:var(--muted);}
+
+/* SERVICES */
+#services{padding:108px 0;background:var(--off);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+.svc-card{background:var(--white);border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 10px rgba(11,28,58,.06);transition:transform var(--tr),box-shadow var(--tr);}
+.svc-card:hover{transform:translateY(-5px);box-shadow:var(--sh);}
+.svc-top{background:var(--navy);padding:24px 24px 20px;position:relative;overflow:hidden;}
+.svc-top::after{content:'';position:absolute;bottom:-26px;right:-14px;width:84px;height:84px;background:rgba(232,80,10,.1);border-radius:50%;}
+.svc-ico{width:42px;height:42px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:13px;position:relative;z-index:1;}
+.svc-ico svg{width:21px;height:21px;color:#fff;}
+.svc-n{font-size:10px;font-family:var(--en);font-weight:600;color:rgba(255,255,255,.38);letter-spacing:.1em;margin-bottom:5px;}
+.svc-title{font-size:15.5px;font-weight:700;color:#fff;line-height:1.4;word-break:keep-all;}
+.svc-body{padding:20px 24px;}
+.svc-desc{font-size:12.5px;color:var(--muted);line-height:1.8;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.svc-feats{display:flex;flex-direction:column;gap:6px;}
+.svc-feat{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--text);}
+.svc-feat svg{width:13px;height:13px;color:var(--orange);flex-shrink:0;}
+
+/* WHY */
+#why{padding:108px 0;background:var(--white);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start;}
+.why-items{margin-top:32px;display:flex;flex-direction:column;gap:20px;}
+.wi{display:flex;gap:16px;align-items:flex-start;}
+.wi-num{font-family:var(--en);font-size:11.5px;font-weight:700;color:var(--orange);background:var(--orange-pale);border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;}
+.wi-title{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:4px;word-break:keep-all;}
+.wi-text{font-size:12.5px;color:var(--muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+.ct-wrap{background:var(--white);border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh);}
+.ct-head{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--navy);padding:13px 17px;}
+.ct-h{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-align:center;}
+.ct-h.act{color:var(--orange2);}
+.ct-h:first-child{text-align:left;}
+.ct-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 17px;border-bottom:1px solid var(--gray);align-items:center;}
+.ct-row:last-child{border:none;}
+.ct-row:nth-child(even){background:var(--off);}
+.ct-lbl{font-size:12px;color:var(--text);font-weight:500;}
+.ct-cell{display:flex;justify-content:center;}
+.ct-cell svg{width:16px;height:16px;}
+.ck{color:var(--orange);}
+.cx{color:var(--gray3);}
+
+/* RESULTS */
+#results{padding:108px 0;background:var(--navy);}
+.res-hd{text-align:center;margin-bottom:56px;}
+.res-hd .sec-h{color:#fff;}
+.res-hd .sec-sub{color:rgba(255,255,255,.48);max-width:560px;margin:13px auto 0;}
+.bns-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.06);border-radius:var(--rl);overflow:hidden;margin-bottom:52px;}
+.bns{background:#0d2248;padding:34px 18px;text-align:center;border:1px solid rgba(255,255,255,.05);transition:background var(--tr);}
+.bns:hover{background:#1B3060;}
+.bns-num{font-family:var(--en);font-size:44px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em;}
+.bns-num .s{font-size:24px;color:var(--orange2);}
+.bns-lbl{font-size:11px;color:rgba(255,255,255,.42);margin-top:9px;letter-spacing:.04em;}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;}
+.case-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:var(--rl);padding:24px;transition:background var(--tr),transform var(--tr);}
+.case-card:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);}
+.case-region{font-family:var(--en);font-size:9.5px;font-weight:600;color:var(--orange2);letter-spacing:.1em;margin-bottom:10px;}
+.case-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:11px;line-height:1.45;word-break:keep-all;}
+.case-metrics{display:flex;gap:16px;margin-bottom:13px;flex-wrap:wrap;}
+.case-mn{font-family:var(--en);font-size:21px;font-weight:900;color:var(--orange2);line-height:1;}
+.case-ml{font-size:9.5px;color:rgba(255,255,255,.38);margin-top:3px;}
+.case-desc{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+
+/* TESTIMONIALS */
+#testimonials{padding:108px 0;background:var(--off);}
+.testi-hd{text-align:center;margin-bottom:56px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tc{background:var(--white);border-radius:var(--rl);padding:26px;box-shadow:0 2px 10px rgba(11,28,58,.07);position:relative;}
+.tc::before{content:'"';position:absolute;top:14px;right:20px;font-family:var(--en);font-size:68px;font-weight:900;color:rgba(232,80,10,.09);line-height:1;}
+.tc-stars{display:flex;gap:3px;margin-bottom:13px;}
+.tc-stars svg{width:13px;height:13px;color:var(--yellow);fill:var(--yellow);}
+.tc-text{font-size:13px;color:var(--text);line-height:1.85;margin-bottom:18px;word-break:keep-all;overflow-wrap:anywhere;}
+.tc-author{display:flex;align-items:center;gap:11px;}
+.tc-avatar{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:14px;}
+.tc-name{font-size:12.5px;font-weight:700;color:var(--navy);}
+.tc-role{font-size:10.5px;color:var(--muted);}
+
+/* PROCESS */
+#process{padding:108px 0;background:var(--white);}
+.proc-hd{text-align:center;margin-bottom:60px;}
+.proc-hd .sec-sub{max-width:480px;margin:13px auto 0;}
+.psteps{display:flex;position:relative;}
+.psteps::before{content:'';position:absolute;top:30px;left:calc(10% + 16px);right:calc(10% + 16px);height:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));z-index:0;}
+.pstep{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 5px;}
+.pstep-c{width:60px;height:60px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:19px;font-weight:800;margin-bottom:16px;box-shadow:0 4px 16px rgba(232,80,10,.3);transition:transform var(--tr);}
+.pstep:hover .pstep-c{transform:scale(1.1);}
+.pstep-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;word-break:keep-all;}
+.pstep-desc{font-size:11px;color:var(--muted);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere;}
+
+/* FAQ */
+#faq{padding:108px 0;background:var(--off);}
+.faq-hd{text-align:center;margin-bottom:52px;}
+.faq-hd .sec-sub{max-width:480px;margin:13px auto 0;}
+.faq-list{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:11px;}
+.faq-item{background:var(--white);border-radius:var(--r);border:1px solid var(--gray2);overflow:hidden;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;transition:background var(--tr);}
+.faq-q:hover{background:var(--off);}
+.faq-q-txt{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:600;color:var(--navy);word-break:keep-all;}
+.fq-badge{font-family:var(--en);font-size:10.5px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:2px 7px;border-radius:4px;flex-shrink:0;}
+.faq-ico{width:26px;height:26px;border-radius:50%;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform var(--tr);}
+.faq-ico svg{width:13px;height:13px;color:var(--orange);}
+.faq-item.open .faq-ico{transform:rotate(180deg);background:var(--orange);}
+.faq-item.open .faq-ico svg{color:#fff;}
+.faq-a{display:none;padding:0 22px 18px 22px;padding-left:52px;}
+.faq-item.open .faq-a{display:block;}
+.faq-a-txt{font-size:13px;color:var(--muted);line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;}
+
+/* CTA */
+#cta{padding:108px 0;background:var(--white);}
+.cta-box{background:var(--navy);border-radius:var(--rl);padding:76px 56px;position:relative;overflow:hidden;text-align:center;}
+.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(232,80,10,.14) 0%,transparent 55%),radial-gradient(ellipse 50% 70% at 20% 50%,rgba(27,48,96,.4) 0%,transparent 50%);}
+.cta-in{position:relative;z-index:1;}
+.cta-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,214,0,.12);border:1px solid rgba(255,214,0,.28);border-radius:100px;padding:7px 14px;font-size:11.5px;color:var(--yellow);font-weight:600;margin-bottom:22px;letter-spacing:.04em;}
+.cta-badge svg{width:12px;height:12px;}
+.cta-h{font-size:clamp(24px,3vw,40px);font-weight:900;color:#fff;line-height:1.3;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.cta-sub{font-size:14px;color:rgba(255,255,255,.58);max-width:480px;margin:0 auto 36px;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere;}
+.cta-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;}
+.cta-main{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-family:var(--jp);font-size:15.5px;font-weight:700;padding:19px 38px;border-radius:var(--r);transition:all var(--tr);box-shadow:0 4px 24px rgba(232,80,10,.32);}
+.cta-main:hover{background:var(--orange2);transform:translateY(-3px);box-shadow:0 8px 40px rgba(232,80,10,.44);}
+.cta-main svg{width:18px;height:18px;}
+.cta-sub2{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500;padding:19px 22px;border-radius:var(--r);border:1px solid rgba(255,255,255,.18);transition:all var(--tr);}
+.cta-sub2:hover{border-color:rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.06);}
+.cta-note{margin-top:20px;font-size:11px;color:rgba(255,255,255,.28);}
+
+/* COMPANY */
+#company{padding:108px 0;background:var(--off);}
+.co-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:68px;align-items:start;}
+.co-intro{font-size:13px;color:var(--muted);line-height:2;margin-top:22px;padding:20px;background:var(--white);border-radius:var(--rl);}
+.co-tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--rl);overflow:hidden;box-shadow:0 2px 10px rgba(11,28,58,.07);}
+.co-tbl th{font-size:12px;font-weight:600;color:var(--navy);padding:14px 16px;text-align:left;width:108px;background:var(--off);border-right:2px solid var(--gray2);border-bottom:1px solid var(--gray);}
+.co-tbl td{font-size:13px;color:var(--text);padding:14px 16px;background:var(--white);border-bottom:1px solid var(--gray);}
+.co-tbl tr:last-child th,.co-tbl tr:last-child td{border-bottom:none;}
+
+/* CONTACT */
+#contact{padding:108px 0;background:var(--white);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:68px;align-items:start;}
+.cc{margin-top:32px;display:flex;flex-direction:column;gap:13px;}
+.cch{display:flex;align-items:center;gap:13px;padding:16px;background:var(--off);border-radius:var(--r);border-left:3px solid var(--orange);box-shadow:0 1px 5px rgba(11,28,58,.05);}
+.cch-ico{width:38px;height:38px;background:var(--orange-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--orange);}
+.cch-ico svg{width:17px;height:17px;}
+.cch-lbl{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.06em;margin-bottom:2px;}
+.cch-val{font-size:13px;font-weight:600;color:var(--navy);}
+.form-wrap{background:var(--off);border-radius:var(--rl);padding:40px;box-shadow:0 4px 24px rgba(11,28,58,.08);}
+.ftitle{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.fsub{font-size:12px;color:var(--muted);margin-bottom:25px;line-height:1.7;}
+.tr-ph{background:var(--white);border:1.5px dashed var(--gray2);border-radius:var(--r);padding:28px;text-align:center;margin-bottom:22px;}
+.tr-lbl{font-size:10.5px;font-weight:700;color:#2A4A9A;letter-spacing:.08em;margin-bottom:5px;}
+.tr-sub{font-size:12px;color:var(--muted);}
+.tr-link{display:inline-block;margin-top:9px;font-size:12.5px;color:var(--orange);font-weight:600;text-decoration:underline;}
+.dvd{display:flex;align-items:center;gap:10px;margin:18px 0;}
+.dvd::before,.dvd::after{content:'';flex:1;height:1px;background:var(--gray2);}
+.dvd span{font-size:11px;color:var(--muted);}
+.fg{margin-bottom:16px;}
+.fl{display:block;font-size:11.5px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.fl .req{color:var(--orange);margin-left:3px;}
+.fi,.fs,.ft{width:100%;padding:10px 13px;border:1.5px solid var(--gray2);border-radius:var(--r);font-family:var(--jp);font-size:13px;color:var(--text);background:var(--white);transition:border-color var(--tr),box-shadow var(--tr);-webkit-appearance:none;}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,80,10,.1);}
+.ft{resize:vertical;min-height:100px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.fsub-btn{width:100%;padding:16px;background:var(--orange);color:#fff;font-family:var(--jp);font-size:14.5px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all var(--tr);margin-top:5px;}
+.fsub-btn:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:var(--sho);}
+.fsub-btn svg{width:16px;height:16px;}
+.fnote{text-align:center;font-size:10.5px;color:var(--muted);margin-top:9px;}
+
+/* FOOTER */
+#footer{background:var(--navy);padding:52px 0 26px;}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.07);}
+.ft-brand-desc{font-size:12px;color:rgba(255,255,255,.38);margin-top:13px;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+.ft-col-title{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px;}
+.ft-links{display:flex;flex-direction:column;gap:8px;}
+.ft-links a{font-size:12.5px;color:rgba(255,255,255,.42);transition:color var(--tr);}
+.ft-links a:hover{color:rgba(255,255,255,.9);}
+.ft-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:22px;}
+.ft-copy{font-family:var(--en);font-size:11px;color:rgba(255,255,255,.22);}
+.ft-pol{display:flex;gap:18px;}
+.ft-pol a{font-size:11px;color:rgba(255,255,255,.22);transition:color var(--tr);}
+.ft-pol a:hover{color:rgba(255,255,255,.55);}
+
+/* SCROLL TOP */
+#st{position:fixed;bottom:26px;right:26px;width:44px;height:44px;background:var(--orange);color:#fff;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--sho);transition:all var(--tr);opacity:0;transform:translateY(13px);pointer-events:none;z-index:900;}
+#st.visible{opacity:1;transform:none;pointer-events:auto;}
+#st:hover{background:var(--orange2);transform:translateY(-4px);}
+#st svg{width:18px;height:18px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .container{padding:0 26px;}
+  .hero-wrap{grid-template-columns:1fr;gap:36px;padding:52px 0 56px;}
+  .hero-vis{display:none;}
+  .about-grid{grid-template-columns:1fr;gap:36px;}
+  .about-img img{height:280px;}
+  .anb{bottom:-10px;right:-6px;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;gap:36px;}
+  .bns-strip{grid-template-columns:repeat(2,1fr);}
+  .cases-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .co-grid{grid-template-columns:1fr;gap:32px;}
+  .contact-wrap{grid-template-columns:1fr;gap:32px;}
+  .ft-top{grid-template-columns:1fr 1fr;gap:24px;}
+  .psteps{flex-wrap:wrap;}
+  .psteps::before{display:none;}
+  .pstep{flex:0 0 33.33%;padding:9px;}
+}
+@media(max-width:768px){
+  #topbar{display:none;}
+  .h-nav,.h-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-h1{font-size:26px;white-space:normal;}
+  .hero-stats{gap:16px;flex-wrap:wrap;}
+  .hs-num{font-size:26px;}
+  .hero-btns{flex-direction:column;align-items:flex-start;}
+  .btn-cta,.btn-ghost{width:100%;justify-content:center;}
+  .prob-checks{grid-template-columns:1fr;}
+  .svc-grid{grid-template-columns:1fr;}
+  .bns-strip{grid-template-columns:1fr 1fr;}
+  .bns-num{font-size:34px;}
+  .cases-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .pstep{flex:0 0 50%;}
+  .cta-box{padding:40px 22px;}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .co-tbl th{width:78px;padding:11px 11px;}
+  .co-tbl td{padding:11px 13px;font-size:12px;}
+  .frow{grid-template-columns:1fr;}
+  .ft-top{grid-template-columns:1fr;}
+  .ft-bottom{flex-direction:column;gap:11px;text-align:center;}
+  .ft-pol{flex-wrap:wrap;justify-content:center;}
+  #st{bottom:16px;right:16px;}
+  .form-wrap{padding:22px 16px;}
+  #about,#services,#why,#process,#faq,#cta,#company,#contact{padding:68px 0;}
+  #problems,#results,#testimonials{padding:68px 0;}
+}
+@media(max-width:390px){
+  .container{padding:0 14px;}
+  .hero-h1{font-size:23px;}
+  .sec-h{font-size:21px;}
+  .pstep{flex:0 0 100%;}
+  .bns-strip{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <span class="tb-msg">卓球スクール経営者専門の集客代行 ─ 全国120校以上の導入実績</span>
+  <div style="display:flex;align-items:center;gap:7px;">
+    <div class="tb-phone"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>0120-XXX-XXXX</div>
+    <span class="tb-hours">平日 10:00〜18:00</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container">
+    <div class="h-inner">
+      <a href="#" class="h-logo">
+        <div class="lm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
+        <div><div class="ln">T-times ナビ</div><div class="lt">卓球スクール 集客代行</div></div>
+      </a>
+      <nav class="h-nav">
+        <a href="#about">サービス概要</a><a href="#services">施策内容</a><a href="#why">選ばれる理由</a>
+        <a href="#results">実績</a><a href="#faq">よくある質問</a><a href="#company">会社概要</a>
+      </nav>
+      <div class="h-cta"><a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="13" height="13"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>無料相談を予約する</a></div>
+      <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<nav class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMenu()">サービス概要</a><a href="#services" onclick="closeMenu()">施策内容</a>
+  <a href="#why" onclick="closeMenu()">選ばれる理由</a><a href="#results" onclick="closeMenu()">実績</a>
+  <a href="#faq" onclick="closeMenu()">よくある質問</a><a href="#company" onclick="closeMenu()">会社概要</a>
+  <a href="#contact" onclick="closeMenu()" style="margin-top:7px;background:var(--orange);color:#fff;font-weight:700;text-align:center;padding:13px 14px;border-radius:6px;">無料相談を予約する</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-wrap">
+      <div class="fade-up">
+        <div class="hero-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="13" height="13"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>卓球スクール専門 ・ 初月30日間 無料トライアル</div>
+        <h1 class="hero-h1">生徒が増えない悩みを終わらせる。<br><span class="acc">体験申込数3倍</span>を実現する<br>集客代行サービス</h1>
+        <p class="hero-lead"><span style="display:inline-block">T-timesナビは卓球スクールに特化した集客代行サービスです。</span><span style="display:inline-block">デジタル広告・LP制作・体験転換改善まで一括代行し、</span><span style="display:inline-block">経営者が指導に集中できる環境をつくります。</span></p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-cta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>無料相談を予約する（30分）</a>
+          <a href="#services" class="btn-ghost">サービス詳細を見る<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hs-num en">120<span class="s">+</span></div><div class="hs-lbl">導入スクール数</div></div>
+          <div><div class="hs-num en">3.2<span class="s">倍</span></div><div class="hs-lbl">平均 集客増加率</div></div>
+          <div><div class="hs-num en">95<span class="s">%</span></div><div class="hs-lbl">サービス継続率</div></div>
+        </div>
+      </div>
+      <div class="hero-vis fade-up d2">
+        <div class="hi-wrap"><div class="img-placeholder" style="width:100%;height:490px;background:linear-gradient(135deg,#1B3060 0%,#0d2248 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border-radius:var(--rl);"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" width="56" height="56"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:.08em;font-weight:500;">メイン画像をここに挿入</span></div></div>
+        <div class="h-card"><div class="hc-lbl">先月 体験申込数</div><div class="hc-val en">+48</div><div class="hc-sub">前月比 <strong style="color:var(--orange)">+267%</strong></div></div>
+        <div class="h-badge2"><div class="hb2-num en">4.9</div><div class="hb2-lbl">顧客満足度</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="container">
+    <div class="trust-inner fade-up">
+      <span class="trust-lbl">導入実績</span>
+      <div class="trust-logos">
+        <span class="tl">Tokyo TT Club</span><span class="tl-sep">|</span>
+        <span class="tl">Osaka Ping Pong</span><span class="tl-sep">|</span>
+        <span class="tl">Nagoya TT School</span><span class="tl-sep">|</span>
+        <span class="tl">Yokohama Spin</span><span class="tl-sep">|</span>
+        <span class="tl">Fukuoka Rally</span><span class="tl-sep">|</span>
+        <span class="tl">Sapporo TT Kids</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section id="problems">
+  <div class="container">
+    <div class="prob-hd fade-up">
+      <div class="sec-lbl sec-lbl-c" style="color:var(--orange2);">こんなお悩みありませんか？</div>
+      <h2 class="sec-h" style="color:#fff;text-align:center;">多くの卓球スクール経営者が<br>直面している「集客の壁」</h2>
+      <p class="sec-sub" style="text-align:center;color:rgba(255,255,255,.48);max-width:580px;margin:13px auto 0;">1つでも当てはまる方は、T-timesナビが解決できます。</p>
+    </div>
+    <div class="prob-checks fade-up d1">
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">SNSを更新しても体験問い合わせが増えない</span></div>
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">チラシやポスティングの費用対効果が悪い</span></div>
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">集客に時間をとられ、指導に集中できない</span></div>
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">近隣に競合スクールができ生徒が流出している</span></div>
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">体験に来ても入会してもらえない（成約率が低い）</span></div>
+      <div class="pc"><div class="pc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="pc-txt">Google広告やSEOのやり方が全くわからない</span></div>
+    </div>
+    <div class="prob-cta fade-up d2">
+      <p>これらの悩みを、T-timesナビが一括解決します。</p>
+      <a href="#contact" class="btn-cta">無料相談を予約する（30分・完全無料）<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="about-img"><div style="width:100%;height:410px;background:linear-gradient(135deg,#F0EDE8 0%,#E2DDD6 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.18)" stroke-width="1.5" width="48" height="48"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:12.5px;color:rgba(0,0,0,0.3);letter-spacing:.08em;font-weight:500;">サブ画像をここに挿入</span></div></div>
+        <div class="anb"><div class="anb-num en">7年+</div><div class="anb-lbl">卓球業界専門の支援実績</div></div>
+      </div>
+      <div class="fade-up d2">
+        <div class="sec-lbl">T-times ナビとは</div>
+        <h2 class="sec-h">卓球スクールだけに特化した、<br>集客の専門家チーム</h2>
+        <p class="sec-sub"><span style="display:inline-block">「良い指導があるのに生徒が集まらない」。</span><span style="display:inline-block">その課題に、私たちは7年以上向き合ってきました。</span><span style="display:inline-block">業界特有の集客ノウハウを体系化し、</span><span style="display:inline-block">経営者が指導に集中できる環境を提供します。</span></p>
+        <div class="al">
+          <div class="ali"><div class="ali-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div class="ali-txt"><strong>卓球業界専門の知見</strong><span>業界特有の季節性・ターゲット心理を把握した施策設計</span></div></div>
+          <div class="ali"><div class="ali-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div class="ali-txt"><strong>成果にこだわるKPI管理</strong><span>体験申込数・成約率・LTVを軸にした月次レポート提供</span></div></div>
+          <div class="ali"><div class="ali-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="ali-txt"><strong>専任担当者による伴走支援</strong><span>月1回の定例MTGと迅速チャット対応で安心のサポート体制</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="fade-up">
+      <div class="sec-lbl">施策内容</div>
+      <h2 class="sec-h">集客の全プロセスを<br>ワンストップで支援</h2>
+      <p class="sec-sub">認知獲得から体験・入会・継続まで、スクール経営に必要な集客施策をすべてカバーします。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card fade-up d1"><div class="svc-top"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg></div><div class="svc-n">SERVICE 01</div><div class="svc-title">Webサイト・LP制作・改善</div></div><div class="svc-body"><p class="svc-desc">体験申込に特化した高転換率のLPを制作。既存サイトの改善・SEO対策・スマートフォン最適化まで一貫して対応します。</p><div class="svc-feats"><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>体験申込フォーム最適化</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>地域SEO・Googleマップ対策</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>スマートフォン完全最適化</div></div></div></div>
+      <div class="svc-card fade-up d2"><div class="svc-top"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg></div><div class="svc-n">SERVICE 02</div><div class="svc-title">SNS・デジタル広告運用</div></div><div class="svc-body"><p class="svc-desc">Instagram・LINE・Google広告を活用した継続的な集客施策を代行。業界データに基づいた費用対効果の高い運用を実現します。</p><div class="svc-feats"><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Instagram / Google 広告代行</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>LINE公式アカウント構築・運用</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>月次広告効果レポート提供</div></div></div></div>
+      <div class="svc-card fade-up d3"><div class="svc-top"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div class="svc-n">SERVICE 03</div><div class="svc-title">体験→入会 転換率改善</div></div><div class="svc-body"><p class="svc-desc">体験後の自動フォローアップ設計・成約トークスクリプト提供・退会予兆アラートにより、LTVを大幅に改善します。</p><div class="svc-feats"><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>体験後フォローアップ自動化</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>成約トークスクリプト提供</div><div class="svc-feat"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>退会予兆アラート＆対応支援</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="fade-up">
+        <div class="sec-lbl">Why Choose Us</div>
+        <h2 class="sec-h">T-timesナビが<br>選ばれる4つの理由</h2>
+        <p class="sec-sub">汎用の集客代行会社とは異なる、卓球業界専門だから提供できる価値があります。</p>
+        <div class="why-items">
+          <div class="wi"><div class="wi-num">01</div><div><div class="wi-title">卓球業界に特化した実績データベース</div><div class="wi-text">120校以上の導入実績から蓄積した固有ノウハウを活用。地域・規模・対象年齢に応じた施策を即提案できます。</div></div></div>
+          <div class="wi"><div class="wi-num">02</div><div><div class="wi-title">費用対効果を明確にするレポート体制</div><div class="wi-text">毎月「体験申込数・成約率・CPA」を可視化したレポートを提供。投資対効果を経営者目線で定量確認できます。</div></div></div>
+          <div class="wi"><div class="wi-num">03</div><div><div class="wi-title">完全丸投げOKの運用代行</div><div class="wi-text">広告設定・クリエイティブ制作・分析・改善をすべて代行。ゼロ知識でスタートでき、指導に時間を集中できます。</div></div></div>
+          <div class="wi"><div class="wi-num">04</div><div><div class="wi-title">初月30日間の無料トライアル</div><div class="wi-text">まず試してから判断いただけるよう、初月30日間は無料でご利用可能。リスクなしで集客効果をご体感ください。</div></div></div>
+        </div>
+      </div>
+      <div class="fade-up d2">
+        <div class="ct-wrap">
+          <div class="ct-head"><div class="ct-h">比較項目</div><div class="ct-h">一般代行会社</div><div class="ct-h act">T-timesナビ</div></div>
+          <div class="ct-row"><div class="ct-lbl">卓球業界専門知識</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+          <div class="ct-row"><div class="ct-lbl">月次KPIレポート</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+          <div class="ct-row"><div class="ct-lbl">完全丸投げ対応</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+          <div class="ct-row"><div class="ct-lbl">無料トライアル</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+          <div class="ct-row"><div class="ct-lbl">体験→入会支援</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+          <div class="ct-row"><div class="ct-lbl">専任担当者対応</div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="cx"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg></div><div class="ct-cell"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="ck"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="res-hd fade-up">
+      <div class="sec-lbl sec-lbl-c" style="color:var(--orange2);">実績</div>
+      <h2 class="sec-h">数字が証明する、<br>T-timesナビの成果</h2>
+      <p class="sec-sub">全国120校以上の導入実績から生まれた、確かな成果をご覧ください。</p>
+    </div>
+    <div class="bns-strip fade-up d1">
+      <div class="bns"><div class="bns-num en">120<span class="s">+</span></div><div class="bns-lbl">導入スクール数</div></div>
+      <div class="bns"><div class="bns-num en">3.2<span class="s">倍</span></div><div class="bns-lbl">平均 体験申込増加率</div></div>
+      <div class="bns"><div class="bns-num en">68<span class="s">%</span></div><div class="bns-lbl">平均 体験→入会 成約率</div></div>
+      <div class="bns"><div class="bns-num en">95<span class="s">%</span></div><div class="bns-lbl">サービス継続率</div></div>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card fade-up d1"><div class="case-region">CASE 01 ・ 東京都 / 子ども向けスクール</div><div class="case-title">Instagram広告×LP改善で体験申込が月5件→月32件に</div><div class="case-metrics"><div><div class="case-mn en">+540%</div><div class="case-ml">体験申込数</div></div><div><div class="case-mn en">3ヶ月</div><div class="case-ml">達成期間</div></div></div><div class="case-desc">7〜12歳向け習い事需要にフォーカスし、保護者へのリーチを強化。体験LPの離脱率を60%改善し申込数が大幅増加。</div></div>
+      <div class="case-card fade-up d2"><div class="case-region">CASE 02 ・ 大阪府 / 社会人向けスクール</div><div class="case-title">Google広告×Googleマップ最適化で月間新規入会者が12名増加</div><div class="case-metrics"><div><div class="case-mn en">+12名</div><div class="case-ml">月間新規入会者</div></div><div><div class="case-mn en">¥3,200</div><div class="case-ml">CPA（体験申込）</div></div></div><div class="case-desc">地域キーワードでの検索上位を獲得。Googleマップの口コミ改善施策との組み合わせで認知と信頼を同時に向上。</div></div>
+      <div class="case-card fade-up d3"><div class="case-region">CASE 03 ・ 神奈川県 / シニア向けスクール</div><div class="case-title">LINE公式構築で退会率が半減・LTVが1.8倍に</div><div class="case-metrics"><div><div class="case-mn en">-52%</div><div class="case-ml">月間退会率</div></div><div><div class="case-mn en">1.8倍</div><div class="case-ml">顧客LTV</div></div></div><div class="case-desc">LINE公式を活用したフォローアップ自動化を実施。定期的な情報提供とイベント案内により退会防止と関係深化を実現。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-hd fade-up">
+      <div class="sec-lbl sec-lbl-c">お客様の声</div>
+      <h2 class="sec-h" style="text-align:center;">導入スクール経営者からの<br>リアルな声</h2>
+      <p class="sec-sub" style="text-align:center;max-width:500px;margin:13px auto 0;">実際にT-timesナビを活用して集客課題を解決されたスクール経営者の方々にお話を伺いました。</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tc fade-up d1">
+        <div class="tc-stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg></div>
+        <p class="tc-text">導入前は月に数件しか体験申込がなく悩んでいましたが、T-timesナビさんに依頼してから3ヶ月で月30件を超えました。広告のことは全く知識がなかったのですが、丁寧に説明していただきながら進められたので安心でした。</p>
+        <div class="tc-author"><div class="tc-avatar" style="background:#E8F0FF;color:#2A4A9A;">田</div><div><div class="tc-name">田中 健二 様</div><div class="tc-role">東京都 / 子ども卓球スクール経営 / 42歳</div></div></div>
+      </div>
+      <div class="tc fade-up d2">
+        <div class="tc-stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg></div>
+        <p class="tc-text">Googleマップの順位がグンと上がり、口コミも増えました。近所のライバル店に押されていたのが、今では月12〜15名の新規入会が安定して続いています。費用対効果が数字で確認できるのが経営者として一番嬉しいです。</p>
+        <div class="tc-author"><div class="tc-avatar" style="background:#E8F5E9;color:#2A7A4B;">山</div><div><div class="tc-name">山下 裕子 様</div><div class="tc-role">大阪府 / 社会人向けスクール経営 / 55歳</div></div></div>
+      </div>
+      <div class="tc fade-up d3">
+        <div class="tc-stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12,2 15.1,8.3 22,9.3 17,14.1 18.2,21 12,17.8 5.8,21 7,14.1 2,9.3 8.9,8.3"/></svg></div>
+        <p class="tc-text">シニア向けスクールなので退会が多く頭を悩ませていました。LINE公式の仕組みを整えてもらってから退会者が半分以下に。既存生徒が長く通ってくれることで売上も安定してきました。本当に頼んで良かったです。</p>
+        <div class="tc-author"><div class="tc-avatar" style="background:#FFF0E8;color:#C44400;">鈴</div><div><div class="tc-name">鈴木 正雄 様</div><div class="tc-role">神奈川県 / シニア向けスクール経営 / 61歳</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="proc-hd fade-up">
+      <div class="sec-lbl sec-lbl-c">導入の流れ</div>
+      <h2 class="sec-h" style="text-align:center;">最短2週間で集客が動き始める<br>シンプルな導入フロー</h2>
+      <p class="sec-sub">ご相談からサービス開始まで、すべてオンラインで完結します。</p>
+    </div>
+    <div class="psteps">
+      <div class="pstep fade-up d1"><div class="pstep-c">1</div><div class="pstep-title">無料相談（30分）</div><div class="pstep-desc">現状課題・目標・予算をヒアリング。最適な施策プランをご提案します。</div></div>
+      <div class="pstep fade-up d2"><div class="pstep-c">2</div><div class="pstep-title">現状分析・戦略設計</div><div class="pstep-desc">競合調査・サイト分析を踏まえ1週間以内にカスタム戦略を策定します。</div></div>
+      <div class="pstep fade-up d3"><div class="pstep-c">3</div><div class="pstep-title">施策の実装・設定</div><div class="pstep-desc">LP制作・広告設定など、承認後最短1週間で施策を立ち上げます。</div></div>
+      <div class="pstep fade-up d4"><div class="pstep-c">4</div><div class="pstep-title">運用開始・効果測定</div><div class="pstep-desc">数値を毎週モニタリングし、高速PDCAで集客効果を最大化します。</div></div>
+      <div class="pstep fade-up d5"><div class="pstep-c">5</div><div class="pstep-title">月次報告・継続改善</div><div class="pstep-desc">定例MTGで成果を共有。翌月施策を合意の上、継続的に改善します。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-hd fade-up">
+      <div class="sec-lbl sec-lbl-c">よくある質問</div>
+      <h2 class="sec-h" style="text-align:center;">ご導入前によくいただく<br>ご質問にお答えします</h2>
+      <p class="sec-sub">その他ご不明な点はお気軽にお問い合わせください。</p>
+    </div>
+    <div class="faq-list fade-up d1">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>デジタルマーケティングの知識がなくても大丈夫ですか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">はい、まったく問題ありません。広告設定・クリエイティブ制作・効果測定・改善まですべてT-timesナビが代行します。月1回の定例MTGで成果をわかりやすくご説明しますので、経営者様はご自身の指導・スクール運営に専念いただけます。</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>費用はどのくらいかかりますか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">初月30日間は無料トライアルとしてご利用いただけます。その後の費用はスクールの規模・目標・施策内容によって異なります。無料相談の際に貴スクールに最適なプランと費用をご提案しますので、まずはお気軽にご相談ください。</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>どのくらいで効果が出始めますか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">Google広告・SNS広告は最短1〜2週間で体験申込が発生し始めるケースが多いです。SEOや口コミ強化は3〜6ヶ月でじわじわと効果が積み上がります。短期と中長期の施策を組み合わせることで、継続的な集客力を構築します。</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>小規模なスクールでも対応可能ですか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">はい、対応可能です。個人経営の小規模スクールから複数拠点を持つ中規模スクールまで、幅広くご支援しています。予算が限られている場合でも、費用対効果の高い施策から優先的に実施するプランをご提案できます。</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>契約期間・解約条件はどのようになっていますか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">標準は月額継続プランです。最低契約期間は3ヶ月とさせていただいており、以降は1ヶ月前のご連絡で解約可能です。長期的な集客力向上のため継続的なご利用を推奨していますが、柔軟にご相談いただけます。</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-txt"><span class="fq-badge">Q</span>対応エリアはどこまでですか？</div><div class="faq-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div><div class="faq-a"><p class="faq-a-txt">全国対応可能です。打ち合わせはすべてオンライン（Zoom等）で実施しますので、北海道から沖縄まで、どこのスクールでもご支援できます。実際に全国各地のスクールをご支援中です。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-box fade-up">
+      <div class="cta-in">
+        <div class="cta-badge"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>初月30日間 無料トライアル実施中</div>
+        <h2 class="cta-h">まず、30分の無料相談から<br>始めてみませんか</h2>
+        <p class="cta-sub"><span style="display:inline-block">現在の集客課題をお聞きし、貴スクールに最適な施策プランを</span><span style="display:inline-block">無料でご提案します。費用・契約は一切不要です。</span></p>
+        <div class="cta-btns">
+          <a href="#contact" class="cta-main"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>今すぐ無料相談を予約する</a>
+          <a href="tel:0120-XXX-XXXX" class="cta-sub2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>お電話でご相談</a>
+        </div>
+        <div class="cta-note">最短2週間で集客開始 ・ 全国対応 ・ 完全オンラインOK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company">
+  <div class="container">
+    <div class="co-grid">
+      <div class="fade-up">
+        <div class="sec-lbl">会社概要</div>
+        <h2 class="sec-h">Company</h2>
+        <div class="co-intro">卓球業界の発展とスクール経営者の挑戦を支えることを使命として創業。デジタルマーケティングの知見と7年以上の業界実績を掛け合わせ、再現性の高い集客モデルを提供しています。</div>
+      </div>
+      <div class="fade-up d2">
+        <table class="co-tbl">
+          <tr><th>社名</th><td>株式会社 T-times</td></tr>
+          <tr><th>設立</th><td>2017年4月</td></tr>
+          <tr><th>所在地</th><td>東京都渋谷区〇〇1-2-3 〇〇ビル 5F</td></tr>
+          <tr><th>代表者</th><td>代表取締役 〇〇 〇〇</td></tr>
+          <tr><th>事業内容</th><td>卓球スクール向け集客代行・Webマーケティング支援</td></tr>
+          <tr><th>実績</th><td>全国120校以上のスクールへの支援実績</td></tr>
+          <tr><th>対応エリア</th><td>全国（完全オンライン対応可）</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="fade-up">
+        <div class="sec-lbl">お問い合わせ</div>
+        <h2 class="sec-h">まずはお気軽に<br>ご相談ください</h2>
+        <p class="sec-sub"><span style="display:inline-block">無料相談・資料請求・お見積りなど、</span><span style="display:inline-block">どんなご相談もお受けしています。</span><span style="display:inline-block">通常1営業日以内にご連絡します。</span></p>
+        <div class="cc">
+          <div class="cch"><div class="cch-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><div class="cch-lbl">メールアドレス</div><div class="cch-val">info@t-times-navi.jp</div></div></div>
+          <div class="cch"><div class="cch-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><div class="cch-lbl">お電話（平日10:00〜18:00）</div><div class="cch-val">0120-XXX-XXXX</div></div></div>
+          <div class="cch"><div class="cch-ico"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><div><div class="cch-lbl">日程調整（TimeRex）</div><div class="cch-val">オンライン30分 無料相談を予約</div></div></div>
+        </div>
+      </div>
+      <div class="form-wrap fade-up d2">
+        <div class="ftitle">無料相談・お問い合わせ</div>
+        <div class="fsub">フォームにご記入いただくか、TimeRexより直接日程をお選びください。</div>
+        <div class="tr-ph">
+          <div class="tr-lbl">TIMEREX ─ 日程調整ツール</div>
+          <div class="tr-sub">ここにTimeRexの埋め込みコードを挿入してください</div>
+          <a href="#" class="tr-link">TimeRexで日程を選ぶ →</a>
+        </div>
+        <div class="dvd"><span>またはフォームでお問い合わせ</span></div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="frow">
+            <div class="fg"><label class="fl">お名前<span class="req">必須</span></label><input type="text" class="fi" placeholder="田中 太郎" required></div>
+            <div class="fg"><label class="fl">スクール名<span class="req">必須</span></label><input type="text" class="fi" placeholder="〇〇卓球スクール" required></div>
+          </div>
+          <div class="fg"><label class="fl">メールアドレス<span class="req">必須</span></label><input type="email" class="fi" placeholder="info@example.jp" required></div>
+          <div class="frow">
+            <div class="fg"><label class="fl">電話番号</label><input type="tel" class="fi" placeholder="03-XXXX-XXXX"></div>
+            <div class="fg"><label class="fl">月間集客目標</label><select class="fs"><option value="">選択してください</option><option>月10名以上</option><option>月20〜30名</option><option>月50名以上</option><option>まず現状を改善したい</option></select></div>
+          </div>
+          <div class="fg"><label class="fl">お問い合わせ内容</label><textarea class="ft" placeholder="現在の集客課題や、ご希望のサービスについてお知らせください。"></textarea></div>
+          <button type="submit" class="fsub-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>無料相談の申し込みを送信する</button>
+          <div class="fnote">送信後、1営業日以内にご連絡します。個人情報は厳正に管理されます。</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="ft-top">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="lm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
+          <div><div class="ln">T-times ナビ</div><div class="lt" style="color:rgba(255,255,255,.32);">卓球スクール 集客代行</div></div>
+        </div>
+        <p class="ft-brand-desc">卓球業界に特化した集客代行サービス。経営者が「指導」に集中できる環境をつくるために、デジタルマーケティングの全プロセスを代行します。</p>
+      </div>
+      <div><div class="ft-col-title">サービス</div><div class="ft-links"><a href="#services">Webサイト・LP制作</a><a href="#services">SNS・広告運用</a><a href="#services">体験→入会 転換改善</a><a href="#results">導入事例</a></div></div>
+      <div><div class="ft-col-title">会社情報</div><div class="ft-links"><a href="#about">T-timesナビとは</a><a href="#company">会社概要</a><a href="#contact">採用情報</a><a href="#contact">パートナー申請</a></div></div>
+      <div><div class="ft-col-title">サポート</div><div class="ft-links"><a href="#contact">無料相談を予約</a><a href="#contact">お問い合わせ</a><a href="#faq">よくある質問</a><a href="#">ブログ・事例集</a></div></div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2024 T-times Inc. All rights reserved.</div>
+      <div class="ft-pol"><a href="#">プライバシーポリシー</a><a href="#">特定商取引法に基づく表記</a><a href="#">利用規約</a></div>
+    </div>
+  </div>
+</footer>
+
+<button id="st" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg></button>
+
+<script>
+const hdr=document.getElementById('header'),stBtn=document.getElementById('st');
+window.addEventListener('scroll',()=>{const y=window.scrollY;hdr.classList.toggle('scrolled',y>60);stBtn.classList.toggle('visible',y>400);});
+const hbg=document.getElementById('hbg'),mm=document.getElementById('mobMenu');
+hbg.addEventListener('click',()=>{
+  mm.classList.toggle('open');
+  const sp=hbg.querySelectorAll('span'),o=mm.classList.contains('open');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+});
+function closeMenu(){mm.classList.remove('open');const sp=hbg.querySelectorAll('span');sp[0].style.transform='';sp[1].style.opacity='';sp[2].style.transform='';}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+function toggleFaq(btn){const item=btn.parentElement,was=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('.fsub-btn');btn.style.background='#2A7A4B';btn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>送信しました。1営業日以内にご連絡いたします。';btn.disabled=true;setTimeout(()=>window.location.href='thanks.html',2200);}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'});}});});
+</script>
+</body>
+</html>
